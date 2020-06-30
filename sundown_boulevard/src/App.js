@@ -2,17 +2,20 @@ import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Navbar, NavbarBrand } from 'reactstrap';
+import Menu from './components/menuComponent';
+import { DISHES } from './shared/dishes';
+import Main from './components/mainComponent';
+import { BrowserRouter } from 'react-router-dom';
 
 class App extends Component {
+
   render() {
     return (
+      <BrowserRouter>
       <div className="App">
-        <Navbar dark color="primary">
-          <div className="container">
-            <NavbarBrand href="/">Sundown Boulevard</NavbarBrand>
-          </div>
-        </Navbar>
+        <Main />
       </div>
+    </BrowserRouter>
     );
   }
 }
