@@ -12,7 +12,7 @@ import FindOrder from './findOrder';
             <Row>
               <Col sm="8">
                 <Card body>
-                  <Slider/>
+                  <Slider />
                 </Card>
               </Col>
               <Col sm="4">

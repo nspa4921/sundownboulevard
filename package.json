@@ -1,0 +1,8 @@
+{
+  "name": "SundownBoulevard",
+  "version": "1.0.0",
+  "description": "Frontend Code Challenge",
+  "main": "index.js",
+  "author": "Nemanja Spasic <nemo.spaske@live.com>",
+  "license": "MIT"
+}
