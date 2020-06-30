@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, Input, Col, Label, Row } from 'reactstrap';
+import { Button, Form, Input, Row } from 'reactstrap';
 
 
 
@@ -21,7 +21,7 @@ const FindOrder = (props) => {
   return (
     <Form>
       <Row>
-            <Input type="email" name="email" id="exampleEmail" placeholder="Example: sundownboulevard@dwarf.dk" />
+            <Input type="email" name="email" id="findOrderEmail" placeholder="Example: sundownboulevard@dwarf.dk" />
       </Row>
       <Button outline color="danger" className="float-right">FIND</Button>
     </Form>

@@ -42,3 +42,9 @@ address{
   padding-left:15px;
   padding-right:15px;
 }
+
+.col {
+  flex: 1;
+  background: #aaa;
+  overflow-y: scroll;
+}

@@ -1,39 +1,33 @@
 import React from 'react';
-import { Card, CardImg, CardTitle, Breadcrumb, BreadcrumbItem, Col, Button, Row, Container, CardText} from 'reactstrap';
+import { Card, CardTitle, Breadcrumb, BreadcrumbItem, Col, Button, Row, Container, CardText} from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-function RenderMenuItem ({dish, onClick}) {
-    return (
-        <Card>
-            <Link to={`/menu/${dish.id}`} >
-                <CardImg width="100%" src={dish.image} alt={dish.name} />
-            </Link>
-        </Card>
-    );
-}
 
-function RenderMenuItemDescription ({dish, onClick}) {
-    return (
-        <Card>     
-            <CardTitle>{dish.name}</CardTitle>
-            <CardText>{dish.description}</CardText>       
-        </Card>
-    );
-}
 
-    const Menu = (props) => {
+export default class FetchRandomUser extends React.Component {
+    state = {
+      loading: true,
+      dishes: null
+    };
+  
+    async componentDidMount() {
+      const url = "https://www.themealdb.com/api/json/v1/1/random.php";
+      const response = await fetch(url);
+      const data = await response.json();
+      this.setState({ dishes: data.meals[0], loading: false });
+    }
 
-        const menu = props.dishes.map((dish) => {
-            return (
-                <div className="col-12 col-md-12 m-1"  key={dish.id}>
-                    <RenderMenuItem dish={dish} onClick={props.onClick} />
-                    <RenderMenuItemDescription dish={dish}  />
-                    <br/>
-                    <Button outline color="danger" className="float-right">Generate new</Button>
-                </div>
-            );
-        });
-
+    
+  
+    render() {
+        if (this.state.loading) {
+          return <div>loading...</div>;
+        }
+    
+        if (!this.state.dishes) {
+          return <div>didn't get a dish</div>;
+        }
+    
         return (
             <div className="container">
             <div className="row">
@@ -50,22 +44,24 @@ function RenderMenuItemDescription ({dish, onClick}) {
             <Row>
                 <Col sm="8">
                     <Card body>
-                    <div className="row">
-                        {menu}
+                     <img src={this.state.dishes.strMealThumb} />  
+                        <CardTitle>{this.state.dishes.strCategory}</CardTitle>
+                        <CardText>{this.state.dishes.strInstructions}</CardText>
+                    <div>
+                    <Button outline color="danger" className="float-right" onClick={() => window.location.reload(false)}>Generate new</Button>
                     </div>
                     </Card>
                 </Col>
                 <Col sm="4">
                     <Card body>
-                        <CardTitle>NEXT PICK DATE AND AMOUNT</CardTitle>
+                        <CardTitle>Lorem ipsum dolor sit amet. <br/><br/><br/><br/><h3>PICK SOME DRINKS NEXT</h3></CardTitle>
                         <br></br>
-                        <Button outline color="danger" onClick={props.onClick} >NEXT</Button>
+                        <Button outline color="danger">NEXT</Button>
                     </Card>
                 </Col>
             </Row>
         </Container>
         </div>
-    );
+        );
+      }
     }
-
-export default Menu;

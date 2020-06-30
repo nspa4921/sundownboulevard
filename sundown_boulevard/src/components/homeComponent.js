@@ -16,9 +16,9 @@ import FindOrder from './findOrder';
                 </Card>
               </Col>
               <Col sm="4">
-                <Card body>
+                <Card body >
                   <CardTitle>ORDER FLOW BOX</CardTitle>
-                  <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+                  <CardText>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </CardText>
                   <Button outline color="danger">ORDER</Button>
                 </Card>
                 </Col>
@@ -27,15 +27,16 @@ import FindOrder from './findOrder';
                 <Col sm="6">
                   <Card body>
                     <CardTitle><h2>FIND YOUR ORDER</h2></CardTitle>
-                    <p>ENTER E-MAIL</p>
+                    <CardText>ENTER E-MAIL</CardText>
                     <FindOrder />
                   </Card>
                 </Col>
                 <Col sm="6">
                   <Card body>
                     <CardTitle>Lorem ipsum dolor sit amet</CardTitle>
-                    <CardText><b>CONTENT BOX</b></CardText>
-                    <br></br><br></br><br></br>
+                    <br></br>
+                    <CardText align="center"><b>CONTENT BOX</b></CardText>
+                    <br></br>
                     <Button outline color="danger">Go somewhere</Button>
                   </Card>
                 </Col>
