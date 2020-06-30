@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 
 
-export default class FetchRandomUser extends React.Component {
+export default class FetchRandomDishes extends React.Component {
     state = {
       loading: true,
       dishes: null
@@ -17,8 +17,6 @@ export default class FetchRandomUser extends React.Component {
       this.setState({ dishes: data.meals[0], loading: false });
     }
 
-    
-  
     render() {
         if (this.state.loading) {
           return <div>loading...</div>;

@@ -48,3 +48,12 @@ address{
   background: #aaa;
   overflow-y: scroll;
 }
+
+.carousel-item {
+  height: 350px; 
+}
+
+.carousel-inner > .carousel-item > img {
+  position: absolute;
+  size: 10vh;
+}
