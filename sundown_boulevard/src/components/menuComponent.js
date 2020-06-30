@@ -56,7 +56,7 @@ export default class FetchRandomUser extends React.Component {
                     <Card body>
                         <CardTitle>Lorem ipsum dolor sit amet. <br/><br/><br/><br/><h3>PICK SOME DRINKS NEXT</h3></CardTitle>
                         <br></br>
-                        <Button outline color="danger">NEXT</Button>
+                        <Button outline color="danger" onClick={() => window.location.pathname = '\drinks'}>NEXT</Button>
                     </Card>
                 </Col>
             </Row>
