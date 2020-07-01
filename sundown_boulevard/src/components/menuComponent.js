@@ -11,6 +11,10 @@ export default class FetchRandomDishes extends React.Component {
     };
   
     async componentDidMount() {
+      this.fetchDishes();
+    }
+
+    fetchDishes = async () => {
       const url = "https://www.themealdb.com/api/json/v1/1/random.php";
       const response = await fetch(url);
       const data = await response.json();
@@ -46,7 +50,7 @@ export default class FetchRandomDishes extends React.Component {
                         <CardTitle>{this.state.dishes.strCategory}</CardTitle>
                         <CardText>{this.state.dishes.strInstructions}</CardText>
                     <div>
-                    <Button outline color="danger" className="float-right" onClick={() => window.location.reload(false)}>Generate new</Button>
+                    <Button outline color="danger" className="float-right" onClick={this.fetchDishes}>Generate new</Button>
                     </div>
                     </Card>
                 </Col>

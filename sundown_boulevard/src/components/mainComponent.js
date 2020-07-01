@@ -20,6 +20,13 @@ class Main extends Component {
     };
   }
 
+  async componentDidMount() {
+    const url = "https://www.themealdb.com/api/json/v1/1/random.php";
+    const response = await fetch(url);
+    const data = await response.json();
+    this.setState({ dishes: data.meals[0], loading: false });
+  }
+
   render() {
     return (
       <div>

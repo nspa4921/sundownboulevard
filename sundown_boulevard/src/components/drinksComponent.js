@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 export default class FetchRandomDrinks extends React.Component {
     state = {
       loading: true,
+      drinks: [],
       drink: null
     };
   
@@ -13,7 +14,9 @@ export default class FetchRandomDrinks extends React.Component {
       const url = "https://api.punkapi.com/v2/beers";
       const response = await fetch(url);
       const data = await response.json();
-      this.setState({ drink: data[3], loading: false });
+      this.setState({ 
+        drinks: data, 
+        loading: false });
     }
 
     
@@ -22,7 +25,7 @@ export default class FetchRandomDrinks extends React.Component {
           return <div>loading...</div>;
         }
     
-        if (!this.state.drink) {
+        if (!this.state.drinks) {
           return <div>didn't get a dish</div>;
         }
 
@@ -41,17 +44,41 @@ export default class FetchRandomDrinks extends React.Component {
             <Container>
             <Row>
                 <Col sm="8">
-                    <Card body> 
-                  <div key={this.state.drink.id} className="col-12 col-md-5 m-1">
-                    <Card >
-                    <CardBody>
-                        <CardImg width="100%" src={this.state.drink.image_url} alt={this.state.drink.name} />
-                            <CardTitle>{this.state.drink.name}</CardTitle>
-                            <CardText>{this.state.drink.description}</CardText>
-                    </CardBody>
-                    </Card>
-                  </div>
-                  </Card>
+                    <Row body> 
+                        <div className="col-12 col-md-5 m-1">
+                            {this.state.drinks.map( (d, index) => {
+                                if( index % 2 != 0 ){
+                                    return null;
+                                } else {
+                                  return ( <Card >
+                                    <CardBody>
+                                        <CardImg width="100%" src={d.image_url} alt={d.name} />
+                                            <CardTitle>{d.name}</CardTitle>
+                                            <CardText>{d.description}</CardText>
+                                    </CardBody>
+                                  </Card> );
+                                }
+                                
+                            })}
+                          
+                        </div>
+                        <div className="col-12 col-md-5 m-1">
+                            {this.state.drinks.map( (d, index) => {
+                                if( index % 2 === 0 ){
+                                  return null;
+                              } else {
+                                return ( <Card >
+                                  <CardBody>
+                                      <CardImg width="100%" src={d.image_url} alt={d.name} />
+                                          <CardTitle>{d.name}</CardTitle>
+                                          <CardText>{d.description}</CardText>
+                                  </CardBody>
+                                </Card> );
+                              }
+                            })}
+                          
+                        </div>
+                      </Row>
                   </Col>
                   <Col sm="4">
                     <Card body>
